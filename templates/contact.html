@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - LOAN EXPRESS LTD</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>LOAN EXPRESS LTD</h2>
+    <ul>
+      <li><a href="#" id="dashboardLink">Dashboard</a></li>
+      <li class="active">Contact Us</li>
+      <li class="mobile-only"><a href="settings.html">Settings</a></li>
+      <li class="mobile-only"><a href="about.html">About Us</a></li>
+      <li onclick="logout()">Logout</li>
+    </ul>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <div class="navbar">
+      <button class="nav-toggle" id="sidebarToggle" type="button">Menu</button>
+      <h1>Contact Us</h1>
+      <nav class="nav-links">
+        <a href="settings.html" class="nav-link">Settings</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge" id="userNameBadge"></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="card">
+        <h3>We Are Here To Help</h3>
+        <p class="helper">Reach out anytime and our team will respond quickly.</p>
+        <div class="helper">
+          Email: mushalingayo@gmail.com<br>
+          Phone: 0779549421
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="./static/app_config.js"></script>
+<script src="./static/dashboard_common.js"></script>
+</body>
+</html>

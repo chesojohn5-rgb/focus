@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>LOAN EXPRESS LTD</h2>
+    <ul>
+      <li class="active">Admin Panel</li>
+      <li class="mobile-only"><a href="settings.html">Settings</a></li>
+      <li class="mobile-only"><a href="about.html">About Us</a></li>
+      <li class="mobile-only"><a href="contact.html">Contact Us</a></li>
+      <li onclick="logout()">Logout</li>
+    </ul>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- TOP NAVBAR -->
+    <div class="navbar">
+      <button class="nav-toggle" id="sidebarToggle" type="button">Menu</button>
+      <h1>LOAN EXPRESS LTD - Admin</h1>
+      <nav class="nav-links">
+        <a href="settings.html" class="nav-link">Settings</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge" id="adminName"></span>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- OVERVIEW CARDS -->
+      <section class="overview">
+        <div class="stats-card">
+          <h4>Total Loaned</h4>
+          <p id="statTotalLoaned">0</p>
+        </div>
+        <div class="stats-card">
+          <h4>Total Outstanding</h4>
+          <p id="statOutstanding">0</p>
+        </div>
+        <div class="stats-card">
+          <h4>Pending Approvals</h4>
+          <p id="statPending">0</p>
+        </div>
+      </section>
+
+      <!-- CONTROLS -->
+      <section class="controls">
+        <input id="search" placeholder="Search by user id, loan id or status..." />
+        <button class="btn-primary" id="exportCsv">Export CSV</button>
+      </section>
+
+      <!-- LOANS TABLE -->
+      <section class="card loans-card">
+        <h3>All Loans</h3>
+        <div class="table-wrap">
+          <table id="loansTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Amount</th>
+                <th>Paid</th>
+                <th>Balance</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS will populate -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- USERS TABLE -->
+      <section class="card users-card">
+        <h3>Registered Users</h3>
+        <div class="table-wrap">
+          <table id="usersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>NRC</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS will populate -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PENDING MANUAL PAYMENTS -->
+      <section class="card payments-card">
+        <h3>Pending Manual Payments</h3>
+        <div class="table-wrap">
+          <table id="manualPaymentsTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Loan ID</th>
+                <th>User</th>
+                <th>Amount</th>
+                <th>Provider</th>
+                <th>Phone</th>
+                <th>Reference</th>
+                <th>Submitted At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS will populate -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- MANUAL PAYMENT REVIEW MODAL -->
+<div class="modal" id="manualReviewModal" aria-hidden="true">
+  <div class="modal-content">
+    <h4>Mark Manual Payment</h4>
+    <div id="manualReviewBody">
+      <!-- populated by JS -->
+    </div>
+    <div class="modal-actions">
+      <button id="manualConfirmBtn" class="btn-primary">Mark as Paid</button>
+      <button type="button" class="btn-ghost" onclick="closeModal('manualReviewModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal" id="confirmModal" aria-hidden="true">
+  <div class="modal-content">
+    <h4 id="confirmTitle">Confirm</h4>
+    <p id="confirmMessage">Are you sure?</p>
+    <div class="modal-actions">
+      <button id="confirmYes" class="btn-primary">Yes</button>
+      <button class="btn-ghost" onclick="closeModal('confirmModal')">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- SET PASSWORD MODAL -->
+<div class="modal" id="passwordModal" aria-hidden="true">
+  <div class="modal-content">
+    <h4>Set User Password</h4>
+    <form id="passwordForm">
+      <input type="password" name="password" placeholder="New password (min 6 chars)" required />
+      <input type="hidden" name="userId" />
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Save Password</button>
+        <button type="button" class="btn-ghost" onclick="closeModal('passwordModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="./static/app_config.js"></script>
+<script src="./static/admin.js"></script>
+
+</body>
+</html>

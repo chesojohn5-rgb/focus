@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manual Payment - LOAN EXPRESS LTD</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>LOAN EXPRESS LTD</h1>
+    <nav class="nav-links">
+      <a href="user_dashboard.html" class="nav-link">Back to Dashboard</a>
+    </nav>
+    <div class="nav-actions"></div>
+  </div>
+
+  <div class="container auth-container">
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h1>Manual Payment</h1>
+        <p>Submit your manual repayment details below so the admin can verify and mark the loan as paid.</p>
+      </div>
+    </div>
+
+    <div class="card auth-card">
+      <h1>Confirm Manual Payment</h1>
+      <p class="helper" id="loanSummary">Loading loan details...</p>
+
+      <form id="payNowForm">
+        <div class="form-grid">
+          <label>
+            <span>Phone Number</span>
+            <input type="tel" id="payPhone" placeholder="e.g. 0971234567" required>
+          </label>
+          <label>
+            <span>Mobile Money Provider</span>
+            <select id="payProvider" required>
+              <option value="">-- Select provider --</option>
+              <option value="mtn">MTN</option>
+              <option value="airtel">Airtel</option>
+            </select>
+          </label>
+          <p class="helper">Please send the payment manually to our collection number using your mobile money app, then confirm below. Admin will verify and mark payment as received.</p>
+          <label>
+            <span>Amount</span>
+            <input type="number" id="payAmount" step="0.01" placeholder="Amount" required>
+          </label>
+          <label>
+            <span>Loan ID</span>
+            <input type="text" id="loanId" readonly>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">Submit Payment Confirmation</button>
+      </form>
+
+      <div id="payNowMessage" class="helper"></div>
+      <div id="receiptArea" class="controls" style="display: none; margin-top: 12px;">
+        <button type="button" class="btn-success" id="downloadReceiptBtn">Download Receipt (PDF)</button>
+      </div>
+      <div class="auth-links"><a href="user_dashboard.html">Back to Dashboard</a></div>
+    </div>
+  </div>
+
+  <script src="./static/app_config.js"></script>
+  <script src="./static/pay_now.js"></script>
+</body>
+</html>

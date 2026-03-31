@@ -1,0 +1,562 @@
+/* Variables */
+:root{
+  --bg:#f4f6f9;
+  --primary:#0d6efd;
+  --muted:#6c757d;
+  --success:#28a745;
+  --danger:#dc3545;
+  --card:#ffffff;
+  --glass: rgba(255,255,255,0.6);
+}
+
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+body{background:var(--bg);color:#222;}
+
+/* NAVBAR */
+.navbar{background:linear-gradient(90deg,var(--primary),#0069d9);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.navbar{position:relative}
+.navbar h1{font-size:18px}
+.nav-links{display:flex;gap:16px;align-items:center}
+.nav-link{color:#fff;text-decoration:none;font-weight:600;font-size:14px;opacity:0.9}
+.nav-link:hover{opacity:1;text-decoration:underline}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.badge{background:rgba(255,255,255,0.12);padding:6px 10px;border-radius:20px;font-weight:600}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.18);color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
+.nav-toggle{display:none;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.25);color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
+
+/* CONTAINER */
+.container{max-width:1100px;margin:20px auto;padding:0 16px}
+
+/* OVERVIEW / STATS */
+.overview{display:flex;gap:14px;margin-bottom:16px}
+.stats-card{flex:1;background:var(--card);padding:16px;border-radius:8px;box-shadow:0 6px 18px rgba(16,24,40,0.06);}
+.stats-card h4{color:var(--muted);font-weight:600;margin-bottom:6px}
+.stats-card p{font-size:20px;font-weight:700}
+
+/* CONTROLS */
+.controls{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.controls input{flex:1;padding:8px;border:1px solid #e6e9ef;border-radius:6px}
+.controls button{padding:8px 12px;border-radius:6px}
+
+/* CARDS */
+.card{background:var(--card);padding:16px;border-radius:8px;box-shadow:0 6px 18px rgba(16,24,40,0.06);margin-bottom:16px}
+.form-inline{display:flex;gap:10px}
+.form-inline input{flex:1}
+.form-inline button{white-space:nowrap}
+.helper{color:var(--muted);margin-top:8px;font-size:14px}
+
+/* TABLE */
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{padding:10px;border-bottom:1px solid #f1f3f6;text-align:left}
+th{background:linear-gradient(90deg,var(--primary),#0069d9);color:#fff;position:sticky;top:0}
+.status-approved{color:var(--success);font-weight:700}
+.status-pending{color:#ff9800;font-weight:700}
+.status-rejected{color:var(--danger);font-weight:700}
+
+/* BUTTONS */
+button{cursor:pointer;border:none}
+.btn-primary{background:var(--primary);color:#fff;padding:8px 12px;border-radius:6px}
+.btn-success{background:var(--success);color:#fff;padding:8px 12px;border-radius:6px}
+.btn-danger{background:var(--danger);color:#fff;padding:8px 12px;border-radius:6px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center;padding:20px}
+.modal[aria-hidden="false"]{display:flex}
+.modal-content{background:var(--card);padding:18px;border-radius:8px;max-width:420px;width:100%;box-shadow:0 10px 30px rgba(2,6,23,0.2)}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .overview{flex-direction:column}
+  .form-inline{flex-direction:column}
+  .controls{flex-direction:column;align-items:stretch}
+  .nav-links{
+    display:flex;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    flex-direction:column;
+    gap:10px;
+    padding:0 16px;
+    background:linear-gradient(90deg,var(--primary),#0069d9);
+    border-bottom:1px solid rgba(255,255,255,0.15);
+    z-index: 50;
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    pointer-events:none;
+    transform: translateY(-6px);
+    transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease, padding 0.2s ease;
+  }
+  .nav-links.open{
+    max-height:240px;
+    opacity:1;
+    pointer-events:auto;
+    transform: translateY(0);
+    padding:12px 16px;
+  }
+  .nav-actions{gap:6px}
+  .card{padding:14px}
+}
+
+/* TOAST */
+.toast{position:fixed;right:20px;bottom:20px;background:#111;color:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.2);display:none}
+.toast.show{display:block}
+
+/* MOBILE ENHANCEMENTS: collapse table into cards and optimize spacing for small devices */
+@media (max-width: 600px) {
+  .container{padding:12px}
+  .navbar h1{font-size:16px}
+  .badge{padding:6px 8px;font-size:13px}
+  .btn-ghost, .btn-primary, .btn-success, .btn-danger{padding:10px 12px;font-size:15px}
+
+  /* stack overview cards */
+  .overview{flex-direction:column;gap:10px}
+  .stats-card{padding:12px}
+
+  /* controls stack */
+  .controls{flex-direction:column;align-items:stretch}
+  .controls input{width:100%}
+
+  /* keep tables horizontal on mobile, shrink spacing to fit */
+  .table-wrap{overflow-x:auto}
+  .table-wrap table{display:table;min-width:100%}
+  .table-wrap thead{display:table-header-group}
+  .table-wrap tbody{display:table-row-group}
+  .table-wrap tr{display:table-row}
+  .table-wrap th, .table-wrap td{
+    display:table-cell;
+    padding:6px 8px;
+    font-size:12px;
+    white-space:nowrap;
+  }
+  .table-wrap td.actions{display:table-cell}
+
+  /* Make forms and modal buttons full width */
+  .form-inline{gap:8px}
+  .form-inline input, .form-inline button{width:100%}
+  .form-inline input[type="number"]{
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  .form-inline input[type="number"]::-webkit-outer-spin-button,
+  .form-inline input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .modal-content{width:100%;max-width:560px;margin:0 8px}
+  .modal-actions{flex-direction:column;align-items:stretch}
+  .modal-actions button{width:100%}
+
+  /* compact table on small screens */
+  th, td{font-size:12px}
+}
+
+/* VERY SMALL DEVICES */
+@media (max-width: 380px){
+  .navbar{padding:10px}
+  .navbar h1{font-size:15px}
+  .stats-card p{font-size:18px}
+  .badge{font-size:12px;padding:6px}
+}
+
+/* Tablet landscape tweaks */
+@media (min-width:601px) and (max-width:900px){
+  .container{max-width:900px}
+  .overview{gap:12px}
+  .table-wrap th, .table-wrap td{padding:8px}
+}
+
+/* ensure modals occupy comfortable space on mobile when opened */
+@media (max-height:600px){
+  .modal-content{max-height:86vh;overflow:auto}
+}
+
+/* small helpers */
+.center{display:flex;align-items:center;justify-content:center}
+.mono{font-family:monospace}
+
+/* =========================
+   DASHBOARD LAYOUT UPGRADE
+========================= */
+
+.dashboard{
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width: 220px;
+  background: #111827;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar h2{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.sidebar ul{
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li{
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sidebar a{
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.sidebar .mobile-only{
+  display: none;
+}
+
+.sidebar li:hover,
+.sidebar .active{
+  background: #2563eb;
+}
+
+/* MAIN CONTENT SHIFT */
+.main{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* IMPROVE NAVBAR */
+.main .navbar{
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* CARDS IMPROVEMENT */
+.card{
+  transition: 0.2s;
+}
+
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* BUTTON IMPROVEMENTS */
+.btn-primary:hover{
+  background: #0b5ed7;
+}
+
+.btn-success:hover{
+  background: #218838;
+}
+
+.btn-danger:hover{
+  background: #c82333;
+}
+
+/* TABLE ENHANCEMENT */
+table tr:hover{
+  background: #f9fbff;
+}
+
+/* SCROLLBAR (optional nice touch) */
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-thumb{
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* =========================
+   RESPONSIVE SIDEBAR
+========================= */
+
+@media(max-width:900px){
+  .sidebar{
+    width: 180px;
+  }
+}
+
+@media(max-width:700px){
+  .dashboard{
+    flex-direction: column;
+  }
+
+  .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 240px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.open{
+    transform: translateX(0);
+  }
+
+  .sidebar ul{
+    display: block;
+    gap: 0;
+  }
+
+  .sidebar li{
+    padding: 10px 12px;
+  }
+
+  .nav-toggle{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* show nav links only when opened via toggle */
+  .navbar .nav-links{ display: none; }
+  .navbar .nav-links.open{
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 16px;
+    background: linear-gradient(90deg, var(--primary), #0069d9);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    z-index: 50;
+  }
+
+  .sidebar .mobile-only{
+    display: block;
+  }
+
+  .main{
+    width: 100%;
+  }
+}
+
+/* Sidebar backdrop for mobile */
+.sidebar-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 900;
+}
+.sidebar-backdrop.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* LOGIN PAGE POLISH */
+body .container{
+  display: block;
+}
+@media (max-width:600px){
+  body .container{
+    max-width: 520px;
+    margin: 16px auto;
+    padding: 16px;
+  }
+  #loginForm{
+    display: grid;
+    gap: 10px;
+  }
+  #loginForm input, #loginForm button{
+    width: 100%;
+  }
+}
+
+/* REGISTRATION PAGE */
+.auth-container{
+  max-width: 720px;
+  margin: 28px auto;
+}
+.welcome-banner{
+  background: linear-gradient(135deg, #0d6efd 0%, #1d4ed8 55%, #0ea5e9 100%);
+  border-radius: 12px;
+  padding: 18px 20px;
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(13, 110, 253, 0.25);
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.welcome-banner:before{
+  content: "";
+  position: absolute;
+  inset: -40% 20% auto -10%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 60%);
+  opacity: 0.9;
+}
+.welcome-text{
+  position: relative;
+  z-index: 1;
+}
+.welcome-banner h1{
+  font-size: 22px;
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+}
+.welcome-banner p{
+  font-size: 14px;
+  opacity: 0.9;
+}
+.auth-card h1{
+  margin-bottom: 4px;
+}
+.auth-card .helper{
+  margin-bottom: 12px;
+}
+.form-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.form-grid label{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  color: #111827;
+}
+.form-grid input{
+  padding: 10px;
+  border: 1px solid #e6e9ef;
+  border-radius: 6px;
+}
+.form-grid select{
+  padding: 10px;
+  border: 1px solid #e6e9ef;
+  border-radius: 6px;
+  background: #fff;
+}
+.upload{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 14px;
+}
+.upload input[type="file"]{
+  padding: 8px;
+  border: 1px dashed #cbd5f5;
+  border-radius: 6px;
+  background: #fff;
+}
+.auth-links{
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 700px){
+  .form-grid{
+    grid-template-columns: 1fr;
+  }
+  .welcome-banner{
+    padding: 16px;
+  }
+  .welcome-banner h1{
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   ADMIN ENHANCEMENTS
+========================= */
+
+/* Make admin stats feel stronger */
+.loans-card h3 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* NRC thumbnail in admin users table */
+.nrc-thumb{
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  display: inline-block;
+}
+
+/* Highlight admin table actions */
+td button {
+  margin-right: 5px;
+}
+
+/* Make approve button stand out */
+.btn-primary {
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+}
+
+/* Danger button stronger */
+.btn-danger {
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+}
+
+/* Success button stronger */
+.btn-success {
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+/* Status colors more visible */
+.status-approved {
+  color: #16a34a;
+}
+
+.status-pending {
+  color: #f59e0b;
+}
+
+.status-rejected {
+  color: #dc2626;
+}
+
+.status-paid {
+  color: #2563eb;
+}
+
+/* Table row hover (important for admin UX) */
+table tr:hover {
+  background: #eef3ff;
+  transition: 0.2s;
+}
+
+/* Better spacing for controls */
+.controls {
+  justify-content: space-between;
+}
+
+/* Improve search input */
+.controls input {
+  max-width: 400px;
+}
+
+/* Make export button pop */
+#exportCsv {
+  font-weight: 600;
+}

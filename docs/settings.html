@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings - LOAN EXPRESS LTD</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>LOAN EXPRESS LTD</h2>
+    <ul>
+      <li><a href="#" id="dashboardLink">Dashboard</a></li>
+      <li class="active">Settings</li>
+      <li class="mobile-only"><a href="about.html">About Us</a></li>
+      <li class="mobile-only"><a href="contact.html">Contact Us</a></li>
+      <li onclick="logout()">Logout</li>
+    </ul>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <div class="navbar">
+      <button class="nav-toggle" id="sidebarToggle" type="button">Menu</button>
+      <h1>Settings</h1>
+      <nav class="nav-links">
+        <a href="settings.html" class="nav-link">Settings</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge" id="userNameBadge"></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="card">
+        <h3>Account Settings</h3>
+        <p class="helper">Update your profile details and keep your account information current.</p>
+
+        <form id="settingsForm">
+          <div class="form-grid">
+            <label>
+              <span>First Name</span>
+              <input type="text" id="settingsName" name="name" placeholder="First name" required>
+            </label>
+            <label>
+              <span>Surname</span>
+              <input type="text" id="settingsSurname" name="surname" placeholder="Surname">
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" id="settingsEmail" name="email" placeholder="you@example.com">
+            </label>
+            <label>
+              <span>Phone Number</span>
+              <input type="tel" id="settingsPhone" name="phone" placeholder="e.g. 0971234567" required>
+            </label>
+          </div>
+
+          <div class="helper">Your phone number is used to sign in.</div>
+          <button type="submit" class="btn-primary">Save Changes</button>
+        </form>
+
+        <div class="helper" id="settingsStatus"></div>
+      </section>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="./static/app_config.js"></script>
+<script src="./static/dashboard_common.js"></script>
+<script src="./static/settings.js"></script>
+</body>
+</html>

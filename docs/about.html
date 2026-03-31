@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us - LOAN EXPRESS LTD</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>LOAN EXPRESS LTD</h2>
+    <ul>
+      <li><a href="#" id="dashboardLink">Dashboard</a></li>
+      <li class="active">About Us</li>
+      <li class="mobile-only"><a href="settings.html">Settings</a></li>
+      <li class="mobile-only"><a href="contact.html">Contact Us</a></li>
+      <li onclick="logout()">Logout</li>
+    </ul>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <div class="navbar">
+      <button class="nav-toggle" id="sidebarToggle" type="button">Menu</button>
+      <h1>About Us</h1>
+      <nav class="nav-links">
+        <a href="settings.html" class="nav-link">Settings</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge" id="userNameBadge"></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="card">
+        <h3>Who We Are</h3>
+        <p class="helper">Fast, transparent, and reliable lending for individuals and small businesses.</p>
+        <div class="helper">
+          LOAN EXPRESS LTD is committed to helping customers access quick funding with clear terms,
+          flexible repayment options, and responsive support. Our mission is to make borrowing simple,
+          fair, and stress-free.
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="./static/app_config.js"></script>
+<script src="./static/dashboard_common.js"></script>
+</body>
+</html>

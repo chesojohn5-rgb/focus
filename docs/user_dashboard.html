@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>LOAN EXPRESS LTD</h2>
+    <ul>
+      <li class="active">Dashboard</li>
+      <li class="mobile-only"><a href="settings.html">Settings</a></li>
+      <li class="mobile-only"><a href="about.html">About Us</a></li>
+      <li class="mobile-only"><a href="contact.html">Contact Us</a></li>
+      <li onclick="logout()">Logout</li>
+    </ul>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <div class="navbar">
+      <button class="nav-toggle" id="sidebarToggle" type="button">Menu</button>
+      <h1>LOAN EXPRESS LTD</h1>
+      <nav class="nav-links">
+        <a href="settings.html" class="nav-link">Settings</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="badge" id="userNameBadge"></span>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- STATS -->
+      <section class="overview user-overview">
+        <div class="stats-card">
+          <h4>Active Loans</h4>
+          <p id="userActiveLoans">0</p>
+        </div>
+        <div class="stats-card">
+          <h4>Total Borrowed</h4>
+          <p id="userTotalBorrowed">0</p>
+        </div>
+        <div class="stats-card">
+          <h4>Outstanding</h4>
+          <p id="userOutstanding">0</p>
+        </div>
+      </section>
+
+      <!-- PAY NOW (UNCHANGED) -->
+      <section class="card" id="payNowCard" style="display: none;">
+        <div class="controls">
+          <h3>Confirm Payment</h3>
+          <span id="payNowInfo"></span>
+        </div>
+        <button type="button" class="btn-success" id="payNowBtn">Confirm Payment</button>
+      </section>
+
+      <!-- REQUEST LOAN -->
+      <section class="card">
+        <h3>Request Loan</h3>
+        <form id="loanForm" class="form-inline">
+          <input type="number" id="amount" placeholder="Enter loan amount" required>
+          <input type="number" id="interest_rate" step="0.01" placeholder="Interest rate (%)">
+          <input type="date" id="due_date" placeholder="Due date">
+          <button type="submit" class="btn-primary">Request Loan</button>
+        </form>
+        <div class="helper" id="interestTotal">Total with interest: -</div>
+      </section>
+
+      <!-- LAST RECEIPT -->
+      <section class="card" id="receiptCard" style="display: none;">
+        <div class="controls">
+          <h3>Last Receipt</h3>
+          <button type="button" class="btn-primary" id="downloadReceiptBtn">Download PDF</button>
+        </div>
+      </section>
+
+      <!-- LOANS TABLE -->
+      <section class="card">
+        <div class="controls">
+          <h3>My Loans</h3>
+          <input id="searchLoans" placeholder="Search loans by id, status or amount" />
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Paid</th>
+                <th>Balance</th>
+                <th>Due Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="loansTable">
+              <!-- JS will insert data here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal" id="payModal" aria-hidden="true">
+  <div class="modal-content">
+    <h4>Confirm Payment</h4>
+    <form id="payForm">
+      <input type="number" name="amount" step="0.01" placeholder="Amount" required />
+      <input type="hidden" name="loanId" />
+      <div class="helper">Please transfer the amount via your mobile money app to our collection number, then click Confirm. Admin will verify and mark the payment as received.</div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Confirm Payment</button>
+        <button type="button" class="btn-ghost" onclick="closeModal('payModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="./static/app_config.js"></script>
+<script src="./static/user.js"></script>
+</body>
+</html>
+
+
+

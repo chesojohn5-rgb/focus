@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Processing - LOAN EXPRESS LTD</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>LOAN EXPRESS LTD</h1>
+    <nav class="nav-links">
+      <a href="user_dashboard.html" class="nav-link">Back to Dashboard</a>
+    </nav>
+    <div class="nav-actions"></div>
+  </div>
+
+  <div class="container auth-container">
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h1>Payment Processing</h1>
+        <p>We are confirming your payment with Lenco.</p>
+      </div>
+    </div>
+
+    <div class="card auth-card">
+      <h1>Thanks!</h1>
+      <p class="helper" id="lencoReturnMessage">Your payment is being verified. You will see your balance updated once confirmed.</p>
+      <div class="controls">
+        <a class="btn-primary" href="user_dashboard.html">Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./static/app_config.js"></script>
+  <script src="./static/lenco_return.js"></script>
+</body>
+</html>
