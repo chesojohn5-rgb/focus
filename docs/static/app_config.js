@@ -1,6 +1,6 @@
 (function () {
   const isGithubPages = /github\.io$/i.test(window.location.hostname);
-  const defaultApiBaseUrl = isGithubPages ? 'https://api.loanexpresslimited.com' : 'http://127.0.0.1:5000';
+  const defaultApiBaseUrl = 'https://api.loanexpresslimited.com';
 
   const appConfig = {
     apiBaseUrl: defaultApiBaseUrl,
