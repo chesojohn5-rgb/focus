@@ -7,7 +7,7 @@
     pages: {
       home: 'index.html',
       login: 'login.html',
-      register: 'registration.html',
+      register: 'index.html',
       userDashboard: 'user_dashboard.html',
       adminDashboard: 'admin_dashboard.html',
       settings: 'settings.html',

@@ -1,15 +1,87 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=login.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LOAN EXPRESS LTD</title>
-  <script>
-    window.location.replace('login.html');
-  </script>
+  <title>Register - LOAN EXPRESS LTD</title>
+  <link rel="stylesheet" href="./static/style.css">
 </head>
 <body>
-  <p>Redirecting to <a href="login.html">login</a>...</p>
+  <div class="container auth-container">
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h1>Welcome to LOAN EXPRESS LTD</h1>
+        <p>Quick registration. Secure access. Professional support.</p>
+      </div>
+    </div>
+    <div class="card auth-card">
+      <h1>LOAN EXPRESS LTD</h1>
+      <p class="helper">Create your account to request a loan.</p>
+
+      <form id="registerForm">
+        <div class="form-grid">
+          <label>
+            <span>First Name</span>
+            <input type="text" id="name" name="name" placeholder="First name" required>
+          </label>
+          <label>
+            <span>Surname</span>
+            <input type="text" id="surname" name="surname" placeholder="Surname" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </label>
+          <label>
+            <span>Phone Number</span>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 0971234567" required>
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+          </label>
+          <label>
+            <span>NRC Number</span>
+            <input type="text" id="nrc_number" name="nrc_number" placeholder="Enter NRC number" required>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">Create Account</button>
+      </form>
+
+      <div id="message" class="helper"></div>
+      <div class="auth-links">Already have an account? <a href="login.html">Login</a></div>
+    </div>
+  </div>
+
+  <script src="./static/app_config.js"></script>
+  <script>
+    const form = document.getElementById('registerForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      message.textContent = '';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await apiFetch('/api/auth/register', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok) {
+          message.textContent = data.message || 'Registration successful. You can now login.';
+          form.reset();
+        } else {
+          message.textContent = data.message || 'Registration failed.';
+        }
+      } catch (err) {
+        message.textContent = 'Registration service not available.';
+      }
+    });
+  </script>
 </body>
 </html>
