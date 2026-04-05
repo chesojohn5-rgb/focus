@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <script src="./static/app_config.js"></script>
+  <script src="app_config.js"></script>
   <script>
     const form = document.getElementById('registerForm');
     const message = document.getElementById('message');
@@ -79,7 +79,9 @@
           message.textContent = data.message || 'Registration failed.';
         }
       } catch (err) {
-        message.textContent = 'Registration service not available.';
+        message.textContent = err && err.message
+          ? `Registration error: ${err.message}`
+          : 'Registration service not available.';
       }
     });
   </script>

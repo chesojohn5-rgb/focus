@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <script src="./static/app_config.js"></script>
+  <script src="app_config.js"></script>
   <script>
     const form = document.getElementById('loginForm');
     form.addEventListener('submit', async (e) => {
@@ -79,7 +79,9 @@
           msg.innerText = data.message || 'Login failed.';
         }
       } catch (err) {
-        msg.innerText = 'Login service not available.';
+        msg.innerText = err && err.message
+          ? `Login error: ${err.message}`
+          : 'Login service not available.';
       }
     });
   </script>
