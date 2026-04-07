@@ -19,48 +19,70 @@
         <p>Secure access. Fast approvals. Professional support.</p>
       </div>
     </div>
+
     <div class="card auth-card">
       <h1>LOAN EXPRESS LTD</h1>
       <p class="helper">Sign in to continue.</p>
+
       <form id="loginForm">
         <div class="form-grid">
           <label>
             <span>First Name</span>
             <input type="text" id="name" placeholder="First name" required>
           </label>
+
           <label>
             <span>Surname</span>
             <input type="text" id="surname" placeholder="Surname" required>
           </label>
+
           <label>
             <span>Email</span>
             <input type="email" id="email" placeholder="you@example.com" required>
           </label>
+
           <label>
             <span>Password</span>
             <input type="password" id="password" placeholder="Password" required>
           </label>
         </div>
-        <button type="submit" class="btn-primary">Login</button>
+
+        <button type="submit" class="btn-primary" id="loginBtn">Login</button>
       </form>
-      <div class="auth-links">Don't have an account? <a href="index.html">Register</a></div>
+
+      <div class="auth-links">
+        Don't have an account? <a href="index.html">Register</a>
+      </div>
+
       <div id="message" class="helper"></div>
     </div>
   </div>
 
   <script src="app_config.js"></script>
+
   <script>
     const form = document.getElementById('loginForm');
+    const btn = document.getElementById('loginBtn');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = document.getElementById('name').value;
-      const surname = document.getElementById('surname').value;
-      const email = document.getElementById('email').value;
+
+      if (btn.disabled) return;
+
+      btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = "Logging in...";
+
+      const name = document.getElementById('name').value.trim();
+      const surname = document.getElementById('surname').value.trim();
+      const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
 
       const msg = document.getElementById('message');
+      msg.innerText = "";
+
       try {
-        const res = await apiFetch('/login', {
+        const res = await apiFetch('/api/auth/login', {
           method: 'POST',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({name, surname, email, password})
@@ -70,18 +92,23 @@
 
         if(res.ok){
           localStorage.setItem('user', JSON.stringify(data.user));
-          if(data.user.is_admin == 1){
+
+          if(data.user && data.user.is_admin == 1){
             goToPage('adminDashboard');
           } else {
             goToPage('userDashboard');
           }
         } else {
-          msg.innerText = data.message || 'Login failed.';
+          msg.innerText = data.message || data.error || 'Login failed.';
         }
+
       } catch (err) {
         msg.innerText = err && err.message
           ? `Login error: ${err.message}`
           : 'Login service not available.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
       }
     });
   </script>
