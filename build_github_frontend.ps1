@@ -18,7 +18,7 @@ if (Test-Path $docsDir) {
 New-Item -ItemType Directory -Path $docsDir | Out-Null
 New-Item -ItemType Directory -Path $docsStaticDir | Out-Null
 
-Get-ChildItem -Path $templatesDir -Filter *.html | ForEach-Object {
+Get-ChildItem -Path $projectRoot -Filter *.html | ForEach-Object {
   Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $docsDir $_.Name)
 }
 

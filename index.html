@@ -83,7 +83,7 @@
       const password = document.getElementById('password').value;
       const nrc_number = document.getElementById('nrc_number').value.trim();
 
-      try {
+      try { 
         const res = await apiFetch('/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

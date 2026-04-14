@@ -36,6 +36,10 @@
         <a href="contact.html" class="nav-link">Contact Us</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="icon-btn" id="notificationBell" aria-label="View notifications">
+          <span>Alerts</span>
+          <span class="notification-count" id="notificationCount">0</span>
+        </button>
         <span class="badge" id="userNameBadge"></span>
       </div>
     </div>
@@ -55,6 +59,167 @@
         <div class="stats-card">
           <h4>Outstanding</h4>
           <p id="userOutstanding">0</p>
+        </div>
+      </section>
+
+      <section class="dashboard-grid dashboard-grid-2">
+        <section class="card profile-card">
+          <div class="section-head">
+            <div>
+              <h3>Profile Summary</h3>
+              <p class="helper">Your account snapshot in one place.</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div class="mini-stat">
+              <span class="mini-label">Name</span>
+              <strong id="profileName">-</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">Phone</span>
+              <strong id="profilePhone">-</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">Email</span>
+              <strong id="profileEmail">-</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">Loans Repaid</span>
+              <strong id="profileRepaidLoans">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="card credit-card">
+          <div class="section-head">
+            <div>
+              <h3>Credit Score</h3>
+              <p class="helper">Repay on time to increase approval confidence.</p>
+            </div>
+            <span class="score-badge" id="creditRiskBadge">New</span>
+          </div>
+          <div class="credit-score-row">
+            <div class="score-circle">
+              <span id="creditScoreValue">600</span>
+            </div>
+            <div class="credit-score-copy">
+              <p class="score-message" id="creditScoreMessage">Building your repayment profile.</p>
+              <p class="helper" id="creditScoreHint">No repayment trend yet.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="card calculator-card">
+        <div class="section-head">
+          <div>
+            <h3>Loan Calculator</h3>
+            <p class="helper">Preview repayment before you request a loan.</p>
+          </div>
+        </div>
+        <div class="calculator-grid">
+          <label>
+            <span>Amount</span>
+            <input type="number" id="calcAmount" placeholder="Enter amount">
+          </label>
+          <label>
+            <span>Interest Rate (%)</span>
+            <input type="number" id="calcRate" step="0.01" placeholder="Interest rate">
+          </label>
+          <label>
+            <span>Term (days)</span>
+            <input type="number" id="calcDays" placeholder="e.g. 30">
+          </label>
+          <label>
+            <span>Start Date</span>
+            <input type="date" id="calcStartDate">
+          </label>
+        </div>
+        <div class="mini-grid calculator-results">
+          <div class="mini-stat">
+            <span class="mini-label">Interest</span>
+            <strong id="calcInterest">-</strong>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-label">Total Repayment</span>
+            <strong id="calcRepayment">-</strong>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-label">Estimated Due Date</span>
+            <strong id="calcDueDate">-</strong>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-label">Installment View</span>
+            <strong id="calcInstallment">-</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid dashboard-grid-2">
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h3>Borrowing Power</h3>
+              <p class="helper">Your current limit based on repayment behavior.</p>
+            </div>
+            <strong id="borrowingLimitValue">0.00</strong>
+          </div>
+          <div class="mini-grid">
+            <div class="mini-stat">
+              <span class="mini-label">Tier</span>
+              <strong id="borrowingTier">Starter</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">Next Unlock</span>
+              <strong id="borrowingNextTier">Repay on time</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h3>Late Fee Watch</h3>
+              <p class="helper">Clear visibility on overdue balances and penalties.</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div class="mini-stat">
+              <span class="mini-label">Overdue Loans</span>
+              <strong id="overdueLoansCount">0</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-label">Estimated Late Fees</span>
+              <strong id="lateFeeTotal">0.00</strong>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h3>Repayment Schedule</h3>
+            <p class="helper">Projected installments for your active loans.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Loan</th>
+                <th>Installment</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="repaymentScheduleTable">
+              <tr>
+                <td colspan="5">No active repayment schedule yet.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -79,12 +244,102 @@
         <div class="helper" id="interestTotal">Total with interest: -</div>
       </section>
 
+      <section class="card" id="notificationsPanel" style="display: none;">
+        <div class="section-head">
+          <div>
+            <h3>Notifications</h3>
+            <p class="helper">Recent account updates and reminders.</p>
+          </div>
+        </div>
+        <div id="notificationList" class="stack-list"></div>
+      </section>
+
       <!-- LAST RECEIPT -->
       <section class="card" id="receiptCard" style="display: none;">
         <div class="controls">
           <h3>Last Receipt</h3>
           <button type="button" class="btn-primary" id="downloadReceiptBtn">Download PDF</button>
         </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h3>Payment History</h3>
+            <p class="helper">Repayments and receipt records kept for reference.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Loan</th>
+                <th>Paid</th>
+                <th>Balance</th>
+                <th>Recorded</th>
+                <th>Receipt</th>
+              </tr>
+            </thead>
+            <tbody id="paymentHistoryTable">
+              <tr>
+                <td colspan="5">No payment history yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="dashboard-grid dashboard-grid-2">
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h3>Loan Agreement</h3>
+              <p class="helper">Preview a printable agreement for your latest loan.</p>
+            </div>
+            <button type="button" class="btn-primary" id="printAgreementBtn">Print Agreement</button>
+          </div>
+          <div id="agreementPreview" class="stack-item">
+            <strong>No loan agreement available yet.</strong>
+            <span>Create or receive an approved loan to generate the agreement preview.</span>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h3>Document Center</h3>
+              <p class="helper">Keep key borrower documents organized.</p>
+            </div>
+          </div>
+          <form id="documentForm" class="document-form">
+            <select id="documentType" required>
+              <option value="">Select document type</option>
+              <option value="National ID">National ID</option>
+              <option value="Payslip">Payslip</option>
+              <option value="Bank Statement">Bank Statement</option>
+              <option value="Loan Contract">Loan Contract</option>
+            </select>
+            <input type="file" id="documentFile" required>
+            <button type="submit" class="btn-success">Save Document Record</button>
+          </form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>File</th>
+                  <th>Saved</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="documentsTable">
+                <tr>
+                  <td colspan="4">No documents saved yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </section>
 
       <!-- LOANS TABLE -->
@@ -104,6 +359,7 @@
                 <th>Balance</th>
                 <th>Due Date</th>
                 <th>Status</th>
+                <th>Tracker</th>
               </tr>
             </thead>
             <tbody id="loansTable">
@@ -135,8 +391,8 @@
   </div>
 </div>
 
-<script src="./static/app_config.js"></script>
-<script src="./static/user.js"></script>
+<script src="app_config.js"></script>
+<script src="user.js"></script>
 </body>
 </html>
 

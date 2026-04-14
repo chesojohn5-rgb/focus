@@ -64,6 +64,45 @@
         <button class="btn-primary" id="exportCsv">Export CSV</button>
       </section>
 
+      <section class="dashboard-grid dashboard-grid-3">
+        <section class="card analytics-card">
+          <div class="section-head">
+            <div>
+              <h3>Issued Loans</h3>
+              <p class="helper">Total value already approved or repaid.</p>
+            </div>
+            <strong id="analyticsIssuedValue">0</strong>
+          </div>
+          <div class="chart-track">
+            <div class="chart-fill chart-fill-primary" id="analyticsIssuedBar"></div>
+          </div>
+        </section>
+        <section class="card analytics-card">
+          <div class="section-head">
+            <div>
+              <h3>Repayments</h3>
+              <p class="helper">Amounts already confirmed as paid.</p>
+            </div>
+            <strong id="analyticsRepaidValue">0</strong>
+          </div>
+          <div class="chart-track">
+            <div class="chart-fill chart-fill-success" id="analyticsRepaidBar"></div>
+          </div>
+        </section>
+        <section class="card analytics-card">
+          <div class="section-head">
+            <div>
+              <h3>Outstanding Balance</h3>
+              <p class="helper">Current unpaid exposure across active loans.</p>
+            </div>
+            <strong id="analyticsOutstandingValue">0</strong>
+          </div>
+          <div class="chart-track">
+            <div class="chart-fill chart-fill-warning" id="analyticsOutstandingBar"></div>
+          </div>
+        </section>
+      </section>
+
       <!-- LOANS TABLE -->
       <section class="card loans-card">
         <h3>All Loans</h3>
@@ -101,6 +140,7 @@
                 <th>Phone</th>
                 <th>NRC</th>
                 <th>Role</th>
+                <th>Notes</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -134,6 +174,61 @@
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section class="dashboard-grid dashboard-grid-2">
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h3>Borrower Documents</h3>
+              <p class="helper">Frontend document records submitted by users.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Type</th>
+                  <th>File</th>
+                  <th>Saved</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminDocumentsTable">
+                <tr>
+                  <td colspan="5">No borrower documents yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h3>Audit Trail</h3>
+              <p class="helper">Recent actions across approvals, payments, notes, and document records.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Actor</th>
+                  <th>Action</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody id="auditTrailTable">
+                <tr>
+                  <td colspan="4">No audit events yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </section>
 
     </div>
@@ -178,6 +273,20 @@
       <div class="modal-actions">
         <button type="submit" class="btn-primary">Save Password</button>
         <button type="button" class="btn-ghost" onclick="closeModal('passwordModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="notesModal" aria-hidden="true">
+  <div class="modal-content">
+    <h4>Admin Notes</h4>
+    <form id="notesForm">
+      <textarea id="adminNoteText" rows="5" placeholder="Reliable client, delayed once, needs follow-up..."></textarea>
+      <input type="hidden" id="adminNoteUserId">
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Save Note</button>
+        <button type="button" class="btn-ghost" onclick="closeModal('notesModal')">Cancel</button>
       </div>
     </form>
   </div>
