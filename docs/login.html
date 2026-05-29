@@ -5,55 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login - LOAN EXPRESS LTD</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      background: #ffffff;
-    }
-  </style>
 </head>
-<body>
-  <div class="container auth-container">
-    <div class="welcome-banner">
-      <div class="welcome-text">
-        <h1>Welcome to Loan Express Limited</h1>
-        <p>Secure access. Fast approvals. Professional support.</p>
+<body class="home-page auth-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Loan Express Limited home">
+      <span class="brand-mark">LE</span>
+      <span>Loan Express Limited</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#services">Services</a>
+      <a href="registration.html">Sign Up</a>
+      <a class="nav-login active-link" href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="auth-shell">
+    <section class="auth-aside">
+      <div>
+        <p class="eyebrow">Welcome back</p>
+        <h1>Access your Loan Express account.</h1>
+        <p>
+          Sign in to review your loan status, make payments, and download your
+          receipts from a secure customer dashboard.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="card auth-card">
-      <h1>LOAN EXPRESS LTD</h1>
-      <p class="helper">Sign in to continue.</p>
+    <section class="auth-panel" aria-labelledby="loginTitle">
+      <div class="auth-card">
+        <p class="eyebrow">Secure login</p>
+        <h1 id="loginTitle">Sign in</h1>
+        <p class="helper">Enter your account details to continue.</p>
 
-      <form id="loginForm">
-        <div class="form-grid">
+        <form id="loginForm" class="auth-form">
           <label>
-            <span>Email</span>
-            <input type="email" id="email" placeholder="you@example.com" required>
+            <span>Email Address</span>
+            <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
           </label>
 
           <label>
             <span>Password</span>
-            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
           </label>
+
+          <button type="submit" class="btn-primary auth-submit" id="loginBtn">Login</button>
+        </form>
+
+        <div id="message" class="helper auth-message"></div>
+
+        <div class="auth-switch">
+          <span>Don't have an account?</span>
+          <a href="registration.html">Create Account</a>
         </div>
-
-        <button type="submit" class="btn-primary" id="loginBtn">Login</button>
-      </form>
-
-      <div class="auth-links">
-        Don't have an account? <a href="index.html">Register</a>
       </div>
-
-      <div id="message" class="helper"></div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script src="app_config.js"></script>
 
   <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.getElementById('siteNav');
     const form = document.getElementById('loginForm');
     const btn = document.getElementById('loginBtn');
     const msg = document.getElementById('message');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

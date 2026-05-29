@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - LOAN EXPRESS LTD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page auth-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Loan Express Limited home">
+      <span class="brand-mark">LE</span>
+      <span>Loan Express Limited</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#services">Services</a>
+      <a class="active-link" href="registration.html">Sign Up</a>
+      <a class="nav-login" href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="auth-shell">
+    <section class="auth-aside">
+      <div>
+        <p class="eyebrow">Start here</p>
+        <h1>Create your Loan Express account.</h1>
+        <p>
+          Register once to request a loan, track approval progress, submit
+          payments, and keep your receipts organized.
+        </p>
+      </div>
+    </section>
+
+    <section class="auth-panel" aria-labelledby="registerTitle">
+      <div class="auth-card">
+        <p class="eyebrow">New customer</p>
+        <h1 id="registerTitle">Create account</h1>
+        <p class="helper">Fill in your details to request loan access.</p>
+
+        <form id="registerForm" class="auth-form">
+          <div class="auth-form-grid">
+          <label>
+            <span>First Name</span>
+            <input type="text" id="name" name="name" placeholder="First name" autocomplete="given-name" required>
+          </label>
+
+          <label>
+            <span>Surname</span>
+            <input type="text" id="surname" name="surname" placeholder="Surname" autocomplete="family-name" required>
+          </label>
+
+          <label>
+            <span>Email Address</span>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </label>
+
+          <label>
+            <span>Phone Number</span>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 0971234567" autocomplete="tel" required>
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input type="password" id="password" name="password" placeholder="Create a password" autocomplete="new-password" required>
+          </label>
+
+          <label>
+            <span>NRC Number</span>
+            <input type="text" id="nrc_number" name="nrc_number" placeholder="Enter NRC number" required>
+          </label>
+          </div>
+
+          <button type="submit" class="btn-primary auth-submit" id="registerBtn">Create Account</button>
+        </form>
+
+        <div id="message" class="helper auth-message"></div>
+
+        <div class="auth-switch">
+          <span>Already have an account?</span>
+          <a href="login.html">Login</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app_config.js"></script>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.getElementById('siteNav');
+    const form = document.getElementById('registerForm');
+    const message = document.getElementById('message');
+    const btn = document.getElementById('registerBtn');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (btn.disabled) return;
+
+      message.textContent = '';
+      btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = 'Creating Account...';
+
+      const name = document.getElementById('name').value.trim();
+      const surname = document.getElementById('surname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value;
+      const nrc_number = document.getElementById('nrc_number').value.trim();
+
+      try {
+        const res = await apiFetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            surname,
+            email,
+            phone,
+            password,
+            nrc_number
+          })
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok) {
+          message.textContent = data.message || 'Registration successful. Redirecting to login...';
+          form.reset();
+
+          setTimeout(() => {
+            goToPage('login');
+          }, 1200);
+        } else {
+          message.textContent = data.message || data.error || 'Registration failed.';
+        }
+      } catch (err) {
+        message.textContent = err && err.message
+          ? `Registration error: ${err.message}`
+          : 'Registration service not available.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,15 +1,359 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=login.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LOAN EXPRESS LTD</title>
-  <script>
-    window.location.replace('login.html');
-  </script>
+  <title>Loan Express Limited</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <p>Redirecting to <a href="login.html">login</a>...</p>
+<body class="home-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Loan Express Limited home">
+      <span class="brand-mark">LE</span>
+      <span>Loan Express Limited</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="#process">Process</a>
+      <a href="#services">Services</a>
+      <a href="registration.html">Sign Up</a>
+      <a class="nav-login" href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section" id="home">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Trusted personal and business lending</p>
+        <h1>Welcome to Loan Express Limited</h1>
+        <p>
+          Fast, clear, and supportive loan services designed to help customers
+          move forward with confidence.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary home-btn" href="registration.html">Create Account</a>
+          <a class="btn-secondary home-btn" href="login.html">Login</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Loan Express Limited highlights">
+      <div>
+        <strong>24/7</strong>
+        <span>Online account access</span>
+      </div>
+      <div>
+        <strong>4 Steps</strong>
+        <span>Simple application flow</span>
+      </div>
+      <div>
+        <strong>ZMW</strong>
+        <span>Local payment support</span>
+      </div>
+      <div>
+        <strong>PDF</strong>
+        <span>Downloadable receipts</span>
+      </div>
+    </section>
+
+    <section class="home-section company-summary" id="company">
+      <div class="section-copy">
+        <p class="eyebrow">About the company</p>
+        <h2>Simple access to finance, handled professionally.</h2>
+        <p>
+          Loan Express Limited provides accessible loan support for individuals
+          and growing businesses. The company focuses on fast service, clear
+          repayment tracking, secure account access, and respectful customer
+          care from application to final payment.
+        </p>
+      </div>
+
+      <div class="summary-grid">
+        <article class="summary-card">
+          <span>01</span>
+          <h3>Quick Applications</h3>
+          <p>Customers can sign up, submit loan requests, and track progress online.</p>
+        </article>
+        <article class="summary-card">
+          <span>02</span>
+          <h3>Transparent Balances</h3>
+          <p>Loan status, paid amount, balance, and receipts stay easy to review.</p>
+        </article>
+        <article class="summary-card">
+          <span>03</span>
+          <h3>Admin Support</h3>
+          <p>The team can approve loans, verify payments, and assist customers securely.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section why-section">
+      <div class="section-copy">
+        <p class="eyebrow">Why choose us</p>
+        <h2>A smoother way to request and manage loans.</h2>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">F</div>
+          <h3>Fast Processing</h3>
+          <p>Apply online and let the team review your request without unnecessary delays.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">S</div>
+          <h3>Secure Access</h3>
+          <p>Customer accounts are protected by login sessions and password hashing.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">T</div>
+          <h3>Clear Tracking</h3>
+          <p>View loan status, repayments, balances, and receipts from your dashboard.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">C</div>
+          <h3>Customer Support</h3>
+          <p>Manual payment verification gives customers a practical support path.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section leadership-section">
+      <div class="ceo-panel">
+        <div class="ceo-avatar" aria-hidden="true">LM</div>
+        <div>
+          <p class="eyebrow">Leadership</p>
+          <h2>Lingayo Mushabati</h2>
+          <p class="ceo-role">Chief Executive Officer</p>
+          <p>
+            The CEO leads Loan Express Limited with a focus on trustworthy
+            service, responsible lending, and customer relationships built on
+            clarity and respect.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section process-section" id="process">
+      <div class="section-copy">
+        <p class="eyebrow">Loan process</p>
+        <h2>From account creation to repayment, the flow stays clear.</h2>
+      </div>
+
+      <div class="process-grid">
+        <article class="process-step">
+          <span>1</span>
+          <h3>Create Account</h3>
+          <p>Sign up with your contact details and NRC number.</p>
+        </article>
+        <article class="process-step">
+          <span>2</span>
+          <h3>Request Loan</h3>
+          <p>Enter the amount, due date, and loan details from your dashboard.</p>
+        </article>
+        <article class="process-step">
+          <span>3</span>
+          <h3>Admin Review</h3>
+          <p>The Loan Express team reviews and updates your loan status.</p>
+        </article>
+        <article class="process-step">
+          <span>4</span>
+          <h3>Pay and Download</h3>
+          <p>Submit payments, receive confirmation, and download receipts.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section services-section" id="services">
+      <div class="section-copy">
+        <p class="eyebrow">Services</p>
+        <h2>Loan services built for everyday needs.</h2>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <h3>Personal Loans</h3>
+          <p>Flexible short-term financial support for personal expenses.</p>
+        </article>
+        <article class="service-card">
+          <h3>Business Support</h3>
+          <p>Loan options for small businesses that need working capital.</p>
+        </article>
+        <article class="service-card">
+          <h3>Manual Payments</h3>
+          <p>Submit MTN or Airtel payment details for admin verification.</p>
+        </article>
+        <article class="service-card">
+          <h3>Digital Receipts</h3>
+          <p>Download receipts after successful payment confirmation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section calculator-section" id="calculator">
+      <div class="calculator-panel">
+        <div class="section-copy">
+          <p class="eyebrow">Loan estimate</p>
+          <h2>Preview a repayment estimate before you apply.</h2>
+          <p>
+            Enter a sample amount, interest rate, and duration to see an
+            estimated total repayment and monthly payment.
+          </p>
+        </div>
+
+        <form class="home-calculator" id="homeCalculator">
+          <label>
+            <span>Loan Amount</span>
+            <input type="number" id="calcAmount" min="1" value="5000">
+          </label>
+          <label>
+            <span>Interest Rate</span>
+            <input type="number" id="calcRate" min="0" value="10">
+          </label>
+          <label>
+            <span>Duration in Months</span>
+            <input type="number" id="calcMonths" min="1" value="6">
+          </label>
+        </form>
+
+        <div class="estimate-grid" aria-live="polite">
+          <div>
+            <span>Total Repayment</span>
+            <strong id="calcTotal">ZMW 5,500.00</strong>
+          </div>
+          <div>
+            <span>Monthly Estimate</span>
+            <strong id="calcMonthly">ZMW 916.67</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section testimonials-section">
+      <div class="section-copy">
+        <p class="eyebrow">Customer experience</p>
+        <h2>Professional service that feels straightforward.</h2>
+      </div>
+
+      <div class="testimonial-grid">
+        <article class="testimonial-card">
+          <p>"The online dashboard made it easy to follow my loan request and payments."</p>
+          <strong>Personal loan customer</strong>
+        </article>
+        <article class="testimonial-card">
+          <p>"Clear payment records and downloadable receipts helped me stay organized."</p>
+          <strong>Small business customer</strong>
+        </article>
+        <article class="testimonial-card">
+          <p>"The process felt simple, secure, and professional from the start."</p>
+          <strong>Returning customer</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section faq-section">
+      <div class="section-copy">
+        <p class="eyebrow">Questions</p>
+        <h2>Frequently asked questions.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>How do I apply for a loan?</summary>
+          <p>Create an account, log in to your dashboard, and submit your loan request.</p>
+        </details>
+        <details>
+          <summary>How are payments confirmed?</summary>
+          <p>Manual payments are submitted through the system and confirmed by an admin.</p>
+        </details>
+        <details>
+          <summary>Can I download receipts?</summary>
+          <p>Yes. Confirmed payments can generate downloadable PDF receipts.</p>
+        </details>
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>Yes. An account is required to request loans, manage payments, and access receipts.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div>
+        <p class="eyebrow">Ready to begin?</p>
+        <h2>Start your Loan Express Limited account today.</h2>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-primary home-btn" href="registration.html">Create Account</a>
+        <a class="btn-secondary home-btn" href="login.html">Login</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Loan Express Limited</p>
+    <div>
+      <a href="about.html">About Us</a>
+      <a href="registration.html">Sign Up</a>
+      <a href="login.html">Login</a>
+      <a href="#services">Services</a>
+    </div>
+  </footer>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.getElementById('siteNav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const amountInput = document.getElementById('calcAmount');
+    const rateInput = document.getElementById('calcRate');
+    const monthsInput = document.getElementById('calcMonths');
+    const totalOutput = document.getElementById('calcTotal');
+    const monthlyOutput = document.getElementById('calcMonthly');
+    const calculatorForm = document.getElementById('homeCalculator');
+    const currencyFormatter = new Intl.NumberFormat('en-ZM', {
+      style: 'currency',
+      currency: 'ZMW'
+    });
+
+    function updateEstimate() {
+      const amount = Math.max(Number(amountInput.value) || 0, 0);
+      const rate = Math.max(Number(rateInput.value) || 0, 0);
+      const months = Math.max(Number(monthsInput.value) || 1, 1);
+      const total = amount + (amount * (rate / 100));
+      const monthly = total / months;
+
+      totalOutput.textContent = currencyFormatter.format(total);
+      monthlyOutput.textContent = currencyFormatter.format(monthly);
+    }
+
+    [amountInput, rateInput, monthsInput].forEach((input) => {
+      input.addEventListener('input', updateEstimate);
+    });
+
+    calculatorForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+    });
+
+    updateEstimate();
+  </script>
 </body>
 </html>

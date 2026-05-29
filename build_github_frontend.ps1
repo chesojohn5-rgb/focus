@@ -18,33 +18,24 @@ if (Test-Path $docsDir) {
 New-Item -ItemType Directory -Path $docsDir | Out-Null
 New-Item -ItemType Directory -Path $docsStaticDir | Out-Null
 
-Get-ChildItem -Path $projectRoot -Filter *.html | ForEach-Object {
+Get-ChildItem -Path $projectRoot -File | Where-Object {
+  $_.Extension -in '.html', '.css', '.js' -or $_.Name -eq 'CNAME'
+} | ForEach-Object {
   Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $docsDir $_.Name)
 }
 
-Get-ChildItem -Path $staticDir -File | ForEach-Object {
-  Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $docsStaticDir $_.Name)
+Get-ChildItem -Path $staticDir -Recurse -File | Where-Object {
+  $_.FullName.Substring($staticDir.Length).TrimStart('\', '/') -notlike 'uploads*'
+} | ForEach-Object {
+  $relativePath = $_.FullName.Substring($staticDir.Length).TrimStart('\', '/')
+  $destination = Join-Path $docsStaticDir $relativePath
+  $destinationDir = Split-Path -Parent $destination
+  if (-not (Test-Path $destinationDir)) {
+    New-Item -ItemType Directory -Path $destinationDir | Out-Null
+  }
+  Copy-Item -LiteralPath $_.FullName -Destination $destination
 }
 
-$indexContent = @'
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=login.html">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LOAN EXPRESS LTD</title>
-  <script>
-    window.location.replace('login.html');
-  </script>
-</head>
-<body>
-  <p>Redirecting to <a href="login.html">login</a>...</p>
-</body>
-</html>
-'@
-
-Set-Content -Path (Join-Path $docsDir 'index.html') -Value $indexContent -Encoding UTF8
 Set-Content -Path (Join-Path $docsDir '.nojekyll') -Value '' -Encoding UTF8
 
 Write-Host "GitHub frontend build complete: $docsDir"

@@ -3,60 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Us - LOAN EXPRESS LTD</title>
+  <title>About Us - Loan Express Limited</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-page about-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Loan Express Limited home">
+      <span class="brand-mark">LE</span>
+      <span>Loan Express Limited</span>
+    </a>
 
-<div class="dashboard">
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <h2>LOAN EXPRESS LTD</h2>
-    <ul>
-      <li><a href="#" id="dashboardLink">Dashboard</a></li>
-      <li class="active">About Us</li>
-      <li class="mobile-only"><a href="settings.html">Settings</a></li>
-      <li class="mobile-only"><a href="contact.html">Contact Us</a></li>
-      <li onclick="logout()">Logout</li>
-    </ul>
-  </aside>
-  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active-link" href="about.html">About Us</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#services">Services</a>
+      <a href="registration.html">Sign Up</a>
+      <a class="nav-login" href="login.html">Login</a>
+    </nav>
+  </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="main">
-
-    <!-- TOP BAR -->
-    <div class="navbar">
-      <button class="nav-toggle" id="sidebarToggle" type="button">Menu</button>
-      <h1>About Us</h1>
-      <nav class="nav-links">
-        <a href="settings.html" class="nav-link">Settings</a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="contact.html" class="nav-link">Contact Us</a>
-      </nav>
-      <div class="nav-actions">
-        <span class="badge" id="userNameBadge"></span>
+  <main>
+    <section class="about-hero">
+      <div class="about-hero-copy">
+        <p class="eyebrow">About Loan Express Limited</p>
+        <h1>Responsible lending with clear support from application to repayment.</h1>
+        <p>
+          Loan Express Limited helps customers access practical financial
+          support through a simple digital process, transparent repayment
+          tracking, and a team focused on professional service.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="container">
-      <section class="card">
-        <h3>Who We Are</h3>
-        <p class="helper">Fast, transparent, and reliable lending for individuals and small businesses.</p>
-        <div class="helper">
-          LOAN EXPRESS LTD is committed to helping customers access quick funding with clear terms,
-          flexible repayment options, and responsive support. Our mission is to make borrowing simple,
-          fair, and stress-free.
+    <section class="home-section about-intro">
+      <div class="section-copy">
+        <p class="eyebrow">Who we are</p>
+        <h2>A finance partner built around speed, clarity, and trust.</h2>
+        <p>
+          We support individuals and small businesses with accessible loan
+          services designed to remove confusion from borrowing. Customers can
+          create an account, submit a request, monitor approval status, make
+          payments, and keep digital receipts in one place.
+        </p>
+      </div>
+
+      <div class="about-metrics">
+        <article>
+          <strong>Secure</strong>
+          <span>Customer account access</span>
+        </article>
+        <article>
+          <strong>Clear</strong>
+          <span>Loan balances and payment records</span>
+        </article>
+        <article>
+          <strong>Local</strong>
+          <span>Manual MTN and Airtel payment support</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section mission-section">
+      <div class="mission-card">
+        <p class="eyebrow">Our mission</p>
+        <h2>To make borrowing simpler, fairer, and easier to manage.</h2>
+        <p>
+          Our mission is to provide dependable access to loans while keeping
+          customers informed at every stage. We believe a professional lending
+          experience should be fast, respectful, and easy to understand.
+        </p>
+      </div>
+      <div class="mission-card">
+        <p class="eyebrow">Our vision</p>
+        <h2>To become a trusted digital lending brand for everyday needs.</h2>
+        <p>
+          We aim to grow with customers by combining responsive service,
+          responsible approvals, and simple online tools for tracking loans
+          and repayments.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section values-section">
+      <div class="section-copy">
+        <p class="eyebrow">Our values</p>
+        <h2>The standards behind our service.</h2>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">R</div>
+          <h3>Responsibility</h3>
+          <p>We treat loan requests carefully and keep repayment visibility clear.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">T</div>
+          <h3>Transparency</h3>
+          <p>Customers can review loan status, paid amounts, balances, and receipts.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">S</div>
+          <h3>Security</h3>
+          <p>Account access and customer records are handled with practical safeguards.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">C</div>
+          <h3>Care</h3>
+          <p>We focus on respectful support before, during, and after approval.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section leadership-section">
+      <div class="ceo-panel">
+        <div class="ceo-avatar" aria-hidden="true">LM</div>
+        <div>
+          <p class="eyebrow">Leadership</p>
+          <h2>Lingayo Mushabati</h2>
+          <p class="ceo-role">Chief Executive Officer</p>
+          <p>
+            Leadership at Loan Express Limited is focused on building a lending
+            experience that customers can understand, trust, and return to when
+            they need reliable support.
+          </p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
+    <section class="about-cta">
+      <div>
+        <p class="eyebrow">Move forward with confidence</p>
+        <h2>Ready to start with Loan Express Limited?</h2>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-primary home-btn" href="registration.html">Create Account</a>
+        <a class="btn-secondary home-btn" href="login.html">Login</a>
+      </div>
+    </section>
   </main>
 
-</div>
+  <footer class="site-footer">
+    <p>Loan Express Limited</p>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="registration.html">Sign Up</a>
+      <a href="login.html">Login</a>
+    </div>
+  </footer>
 
-<script src="app_config.js"></script>
-<script src="dashboard_common.js"></script>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.getElementById('siteNav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 </body>
 </html>
